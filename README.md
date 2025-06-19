@@ -56,13 +56,13 @@ awk -F'\t' 'BEGIN{OFS="\t"} {
 }' > genes.bed
 ```
 ### 4. Annotate SNPs with Gene Information
-## 4.1 Direct Overlaps
+#### 4.1 Direct Overlaps
 Find SNPs overlapping gene regions.
 ```bash
 
 bedtools intersect -a significant_snps.bed -b genes.bed -wa -wb > snp_gene_overlap.txt
 ```
-## 4.2 Nearby Genes
+#### 4.2 Nearby Genes
 Find genes within 1Mb of SNPs.
 ```bash
 
