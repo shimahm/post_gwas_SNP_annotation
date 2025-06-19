@@ -1,5 +1,4 @@
-# post_gwas_SNP_annotation
-# Post-GWAS Analysis Pipeline (V.2)
+# Post-GWAS Analysis Pipeline (SNP_annotation)
 
 This pipeline processes GWAS results to identify significant SNPs, annotate them with gene information, and find overlaps with fatty acid (FA)-related genes. It uses command-line tools (`awk`, `bedtools`) and Python (`pandas`) for processing.
 
