@@ -71,9 +71,6 @@ bedtools window -a significant_snps.bed -b genes.bed -w 1000000 > snp_gene_nearb
 Load snp_gene_nearby.txt and print the number of nearby genes.
 python
 ``````
-
-
-
 import pandas as pd
 
 columns = [
@@ -93,9 +90,6 @@ print(f"Nearby genes found: {df.shape[0]}")
 Match nearby genes with annotated FA genes from BLAST output.
 python
 ``````
-
-
-
 import pandas as pd
 
 # Load SNP-gene nearby file
@@ -126,7 +120,7 @@ print(f"{matched_fa_genes.shape[0]} fatty acid-related genes found near SNPs.")
 ``````
 
 
-###Notes
+Notes
 
 The pipeline assumes the GWAS CSV has a specific structure (SNP ID in column 1, chromosome in column 2, position in column 3, p-value in column 4).
 
