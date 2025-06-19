@@ -37,12 +37,13 @@ Filter SNPs with p-value < 5e-5 from GWAS results.
 
 ```bash
 awk -F',' 'NR==1 || $4 < 5e-5' GAPIT.Association.GWAS_Results.SUPER.X22_1.csv > significant_snps.csv
+```
 
 ### 2. Convert Significant SNPs to BED Format
 Convert filtered SNPs to BED format (0-based, half-open).
 ```bash
-
 awk -F',' 'NR>1 {OFS="\t"; print $2, $3-1, $3, $1}' significant_snps.csv > significant_snps.bed
+```
 
 ### 3. Extract Gene Features from GFF3
 Extract only gene entries from the GFF3 file and convert to BED format.
@@ -53,20 +54,20 @@ awk -F'\t' 'BEGIN{OFS="\t"} {
   match($9, /ID=([^;]+)/, a); 
   print $1, $4-1, $5, a[1] 
 }' > genes.bed
-
+```
 ### 4. Annotate SNPs with Gene Information
 ## 4.1 Direct Overlaps
 Find SNPs overlapping gene regions.
 ```bash
 
 bedtools intersect -a significant_snps.bed -b genes.bed -wa -wb > snp_gene_overlap.txt
-
+```
 ## 4.2 Nearby Genes
 Find genes within 1Mb of SNPs.
 ```bash
 
 bedtools window -a significant_snps.bed -b genes.bed -w 1000000 > snp_gene_nearby.txt
-
+```
 ### 5. Summarize Nearby Genes
 Load snp_gene_nearby.txt and print the number of nearby genes.
 python
