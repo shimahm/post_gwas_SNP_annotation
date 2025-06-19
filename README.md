@@ -71,6 +71,8 @@ bedtools window -a significant_snps.bed -b genes.bed -w 1000000 > snp_gene_nearb
 ### 5. Summarize Nearby Genes
 Load snp_gene_nearby.txt and print the number of nearby genes.
 python
+---
+
 
 import pandas as pd
 
@@ -82,10 +84,14 @@ columns = [
 
 df = pd.read_csv("snp_gene_nearby.txt", sep="\t", header=None, names=columns)
 print(f"Nearby genes found: {df.shape[0]}")
+---
+
 
 ### 6. Identify FA-Related Genes Near SNPs
 Match nearby genes with annotated FA genes from BLAST output.
 python
+---
+
 
 import pandas as pd
 
@@ -114,6 +120,8 @@ matched_fa_genes = matched_fa_genes[[
 # Save results
 matched_fa_genes.to_csv("FA_genes_near_SNP_from_blast.csv", index=False)
 print(f"{matched_fa_genes.shape[0]} fatty acid-related genes found near SNPs.")
+---
+
 
 Notes
 Adjust file paths as needed for your environment.
